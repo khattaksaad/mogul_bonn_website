@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Dark background -->
+  <rect width="64" height="64" fill="#08070A"/>
+  
+  <!-- Thin gold border frame -->
+  <rect x="2" y="2" width="60" height="60" fill="none" stroke="#C9A458" stroke-width="1"/>
+
+  <!-- Stylised "M" lettermark in Cormorant-style serif geometry -->
+  <!-- Left vertical stem -->
+  <rect x="13" y="16" width="5" height="32" fill="#C9A458"/>
+  <!-- Right vertical stem -->
+  <rect x="46" y="16" width="5" height="32" fill="#C9A458"/>
+  <!-- Left diagonal (down-right from top of left stem) -->
+  <polygon points="13,16 18,16 32,36 27,36" fill="#C9A458"/>
+  <!-- Right diagonal (down-left from top of right stem) -->
+  <polygon points="51,16 46,16 32,36 37,36" fill="#C9A458"/>
+
+  <!-- Small gold dot beneath the V as a serif ornament -->
+  <circle cx="32" cy="52" r="2.5" fill="#C9A458"/>
+</svg>
