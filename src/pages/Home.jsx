@@ -14,18 +14,15 @@ const HOURS = [
 ];
 
 function getTodayIndex() {
-  const d = new Date().getDay(); // 0=Sun … 6=Sat
-  return d === 0 ? 6 : d - 1;   // shift to Mon=0 … Sun=6
+  const d = new Date().getDay();
+  return d === 0 ? 6 : d - 1;
 }
 
 function useReveal() {
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('active');
-          obs.unobserve(e.target);
-        }
+        if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
       }),
       { threshold: 0.12 }
     );
@@ -34,7 +31,6 @@ function useReveal() {
   }, []);
 }
 
-/* Marquee Text content */
 const MARQUEE = [
   'Authentisch Indisch', 'Mogul Cuisine', 'Seit Über 30 Jahren',
   'Heerstraße 64, Bonn', 'Reservierungen: 0228 695569',
@@ -45,8 +41,88 @@ export default function Home() {
   useReveal();
   const todayIdx = getTodayIndex();
   const trackRef = useRef(null);
+  const heroRef  = useRef(null);
+  const contentRef = useRef(null);
+  const canvasRef = useRef(null);
 
-  // Drag-to-scroll dishes
+  /* ── Mouse parallax on hero content ─────────────────────────── */
+  useEffect(() => {
+    const hero = heroRef.current;
+    const content = contentRef.current;
+    if (!hero || !content) return;
+
+    let raf;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+
+    const onMouseMove = (e) => {
+      const rect = hero.getBoundingClientRect();
+      tx = ((e.clientX - rect.left) / rect.width  - 0.5) * 18;
+      ty = ((e.clientY - rect.top)  / rect.height - 0.5) * 10;
+    };
+
+    const animate = () => {
+      cx += (tx - cx) * 0.06;
+      cy += (ty - cy) * 0.06;
+      content.style.transform = `translate(${cx}px, ${cy}px)`;
+      raf = requestAnimationFrame(animate);
+    };
+
+    hero.addEventListener('mousemove', onMouseMove);
+    raf = requestAnimationFrame(animate);
+    return () => {
+      hero.removeEventListener('mousemove', onMouseMove);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  /* ── Floating particle canvas ────────────────────────────────── */
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let raf;
+
+    const resize = () => {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const N = 55;
+    const particles = Array.from({ length: N }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.3,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.5 + 0.15,
+    }));
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201,164,88,${p.alpha})`;
+        ctx.fill();
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  /* ── Drag-to-scroll dishes ───────────────────────────────────── */
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -54,32 +130,47 @@ export default function Home() {
     const onDown  = e => { isDown = true; el.style.cursor = 'grabbing'; startX = (e.pageX || e.touches[0].pageX) - el.offsetLeft; scrollLeft = el.scrollLeft; };
     const onUp    = () => { isDown = false; el.style.cursor = 'grab'; };
     const onMove  = e => { if (!isDown) return; e.preventDefault(); const x = (e.pageX || e.touches[0].pageX) - el.offsetLeft; el.scrollLeft = scrollLeft - (x - startX) * 1.6; };
-    el.addEventListener('mousedown', onDown);
-    el.addEventListener('mouseup', onUp);
-    el.addEventListener('mouseleave', onUp);
-    el.addEventListener('mousemove', onMove);
+    el.addEventListener('mousedown', onDown); el.addEventListener('mouseup', onUp);
+    el.addEventListener('mouseleave', onUp);  el.addEventListener('mousemove', onMove);
     return () => { el.removeEventListener('mousedown', onDown); el.removeEventListener('mouseup', onUp); el.removeEventListener('mouseleave', onUp); el.removeEventListener('mousemove', onMove); };
   }, []);
 
   return (
     <main>
       {/* ═══ HERO ════════════════════════════════════════════════ */}
-      <section className="hero">
+      <section className="hero" ref={heroRef}>
+
+        {/* Background image with Ken Burns */}
         <div className="hero-media">
           <img src="/hero-bg.png" alt="Mogul Bonn Restaurant Ambiance" />
         </div>
+
+        {/* Multi-gradient vignette */}
         <div className="hero-vignette" />
 
-        <div className="hero-content">
-          <span className="hero-eyebrow">Heerstraße 64 · Bonn · Seit Über 30 Jahren</span>
+        {/* Floating gold particles */}
+        <canvas className="hero-particles" ref={canvasRef} aria-hidden="true" />
+
+        {/* Animated content */}
+        <div className="hero-content" ref={contentRef}>
+          {/* Eyebrow with char-by-char fade */}
+          <span className="hero-eyebrow">
+            Heerstraße 64 · Bonn · Seit Über 30 Jahren
+          </span>
+
+          {/* Title — each word clips up independently */}
           <h1 className="hero-title">
-            Die Kunst<br />
-            <em>des Mogul</em>
+            <span className="hero-word hero-word-1">Die</span>
+            <span className="hero-word hero-word-2">Kunst</span>
+            <br />
+            <em className="hero-word hero-word-3">des</em>
+            <em className="hero-word hero-word-4">Mogul</em>
           </h1>
+
           <span className="hero-sub">Authentic Indian &amp; Pakistani Cuisine</span>
+
           <div className="hero-actions">
             <Link to="/speisekarte" className="btn btn-gold">Speisekarte</Link>
-            {/* GloriaFood: triggers online ordering popup */}
             <button
               className="glf-button btn btn-gold"
               data-glf-cuid="8f4c63b5-308c-432e-990b-057b82f2697c"
@@ -87,7 +178,6 @@ export default function Home() {
             >
               Online Bestellen
             </button>
-            {/* GloriaFood: triggers table reservation popup */}
             <button
               className="glf-button btn btn-outline"
               data-glf-cuid="8f4c63b5-308c-432e-990b-057b82f2697c"
