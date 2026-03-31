@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 
 const galleryItems = [
   { img: '/assets/images/lamb-biryani.webp',  label: 'Lamb Biryani',     wide: false, tall: false },
-  { img: '/assets/images/dish-2.webp',       label: 'Butter Chicken',   wide: true,  tall: false },
+  { img: '/assets/images/butter-chicken.webp', label: 'Butter Chicken',   wide: true,  tall: false },
   { img: '/assets/images/chicken-biryani.webp',label: 'Chicken Biryani',  wide: false, tall: false },
   { img: '/assets/images/samosay.webp',      label: 'Sabzi Samosa',     wide: false, tall: false },
   { img: '/assets/images/mogul-interior.webp',label: 'Restaurant',       wide: true,  tall: false },
   { img: '/assets/images/palak-ghosht.webp',  label: 'Palak Ghosht',     wide: false, tall: false },
   { img: '/assets/images/channa-masala.webp',label: 'Channa Masala',    wide: false, tall: false },
-  { img: '/assets/images/dish-3.webp',       label: 'Dal Masala',       wide: false, tall: false },
+  { img: '/assets/images/butter-chicken.webp', label: 'Murgh Tikka',      wide: false, tall: false },
   { img: '/assets/images/catering-hero.webp',label: 'Private Dining',   wide: true,  tall: false },
 ];
 

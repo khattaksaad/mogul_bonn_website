@@ -277,7 +277,7 @@ export default function Home() {
           <div className="dishes-scroll-track" ref={trackRef}>
             {[
               { img: '/assets/images/lamb-biryani.webp', name: 'Lamb Biryani', desc: 'Basmatireis mit zartem Lammfleisch, Cashewnüssen, Rosinen und Gewürzen.', price: '17,90 €', num: '01' },
-              { img: '/assets/images/dish-2.webp', name: 'Butter Chicken', desc: 'Zartes Hühnerfleisch in Tomaten-Cashewnuss-Buttersoße — ein Klassiker.', price: '17,90 €', num: '02' },
+              { img: '/assets/images/butter-chicken.webp', name: 'Butter Chicken', desc: 'Zartes Hühnerfleisch in Tomaten-Cashewnuss-Buttersoße — ein Klassiker.', price: '17,90 €', num: '02' },
               { img: '/assets/images/chicken-biryani.webp', name: 'Chicken Biryani', desc: 'Feiner Basmati-Reis mit zartem Hühnerfleisch und Mogul-Gewürzen.', price: '16,90 €', num: '03' },
               { img: '/assets/images/palak-ghosht.webp', name: 'Palak Ghosht', desc: 'Gebratenes Lammfleisch mit kräftigem Blattspinat und besonderen Gewürzen.', price: '18,50 €', num: '04' },
               { img: '/assets/images/channa-masala.webp', name: 'Channa Masala', desc: 'Würzige Kichererbsen mit Ingwer, Knoblauch und aromatischen Gewürzen.', price: '15,50 €', num: '05' },
