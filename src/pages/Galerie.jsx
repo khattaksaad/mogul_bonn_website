@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
 const galleryItems = [
-  { img: '/assets/images/lamb-biryani.webp',  label: 'Lamb Biryani',     wide: false, tall: false },
+  { img: '/assets/images/lamb-biryani.webp',  label: 'Lamb Biryani',     wide: false, tall: true },
   { img: '/assets/images/butter-chicken.webp', label: 'Butter Chicken',   wide: true,  tall: false },
-  { img: '/assets/images/chicken-biryani.webp',label: 'Chicken Biryani',  wide: false, tall: false },
-  { img: '/assets/images/samosay.webp',      label: 'Sabzi Samosa',     wide: false, tall: false },
-  { img: '/assets/images/mogul-interior.webp',label: 'Restaurant',       wide: true,  tall: false },
-  { img: '/assets/images/palak-ghosht.webp',  label: 'Palak Ghosht',     wide: false, tall: false },
-  { img: '/assets/images/channa-masala.webp',label: 'Channa Masala',    wide: false, tall: false },
-  { img: '/assets/images/butter-chicken.webp', label: 'Murgh Tikka',      wide: false, tall: false },
-  { img: '/assets/images/catering-hero.webp',label: 'Private Dining',   wide: true,  tall: false },
+  { img: '/assets/images/mogul-interior.webp', label: 'Our Interior',     wide: false, tall: true },
+  { img: '/assets/images/chicken-biryani.webp',label: 'Chicken Biryani',  wide: false, tall: true },
+  { img: '/assets/images/samosay.webp',      label: 'Sabzi Samosa',     wide: false, tall: true },
+  { img: '/assets/images/palak-ghosht.webp',  label: 'Palak Ghosht',     wide: false, tall: true },
+  { img: '/assets/images/channa-masala.webp',label: 'Channa Masala',    wide: false, tall: true },
+  { img: '/assets/images/hero-bg.webp',      label: 'Bonn Altstadt',    wide: true,  tall: false },
+  { img: '/assets/images/catering-hero.webp',label: 'Event Catering',   wide: true,  tall: false },
 ];
 
 export default function Galerie() {
@@ -50,7 +50,7 @@ export default function Galerie() {
             {galleryItems.map((item, i) => (
               <div
                 key={i}
-                className={`gallery-big-item${item.wide ? ' wide' : ''}`}
+                className={`gallery-big-item${item.wide ? ' wide' : ''}${item.tall ? ' tall' : ''}`}
                 style={{ animationDelay: `${i * 0.07}s` }}
               >
                 <img src={item.img} alt={item.label} loading="lazy" />

@@ -6,21 +6,21 @@ const PACKAGES = [
     name: 'Private Events',
     tag: 'Geburtstag · Jubiläum · Familie',
     desc: 'Das volle Mogul-Erlebnis bei Ihnen zu Hause oder in Ihrer Location. Individuell geplant, professionell umgesetzt — von der ersten Vorspeise bis zum letzten Dessert.',
-    img: '/assets/images/catering-hero.webp',
+    img: '/assets/images/catering-private.png',
   },
   {
     num: '02',
     name: 'Firmenfeiern',
     tag: 'Team-Dinner · Business-Lunch · Events',
     desc: 'Unternehmensevents mit der Qualität und dem Niveau, das Ihre Gäste verdienen. Flexible Buffet- und Menüoptionen, angepasst an Ihre Gästezahl.',
-    img: '/assets/images/catering-hero.webp',
+    img: '/assets/images/catering-corporate.png',
   },
   {
     num: '03',
     name: 'Hochzeiten',
     tag: 'Buffet · Live-Station · Mehrgänger',
     desc: 'Machen Sie Ihren besonderen Tag mit authentischer indisch-pakistanischer Küche unvergesslich — ob Buffet, Live-Grill-Station oder mehrgängiges Menü.',
-    img: '/assets/images/catering-hero.webp',
+    img: '/assets/images/catering-wedding.png',
   },
 ];
 
