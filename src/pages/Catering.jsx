@@ -6,21 +6,21 @@ const PACKAGES = [
     name: 'Private Events',
     tag: 'Geburtstag · Jubiläum · Familie',
     desc: 'Das volle Mogul-Erlebnis bei Ihnen zu Hause oder in Ihrer Location. Individuell geplant, professionell umgesetzt — von der ersten Vorspeise bis zum letzten Dessert.',
-    img: '/catering-hero.png',
+    img: '/assets/images/catering-hero.webp',
   },
   {
     num: '02',
     name: 'Firmenfeiern',
     tag: 'Team-Dinner · Business-Lunch · Events',
     desc: 'Unternehmensevents mit der Qualität und dem Niveau, das Ihre Gäste verdienen. Flexible Buffet- und Menüoptionen, angepasst an Ihre Gästezahl.',
-    img: '/catering-hero.png',
+    img: '/assets/images/catering-hero.webp',
   },
   {
     num: '03',
     name: 'Hochzeiten',
     tag: 'Buffet · Live-Station · Mehrgänger',
     desc: 'Machen Sie Ihren besonderen Tag mit authentischer indisch-pakistanischer Küche unvergesslich — ob Buffet, Live-Grill-Station oder mehrgängiges Menü.',
-    img: '/catering-hero.png',
+    img: '/assets/images/catering-hero.webp',
   },
 ];
 
@@ -102,7 +102,7 @@ export default function CateringPage() {
       ══════════════════════════════════════════════════════ */}
       <section className="ct-hero">
         <div className="ct-hero-media">
-          <img src="/catering-hero.png" alt="Mogul Bonn Catering" />
+          <img src="/assets/images/catering-hero.webp" alt="Mogul Bonn Catering" />
         </div>
         <div className="ct-hero-overlay" />
 
@@ -167,7 +167,7 @@ export default function CateringPage() {
           <div className="ct-includes-grid">
             {/* Left: image with decorative frame */}
             <div className="ct-includes-img-wrap reveal-left">
-              <img src="/catering-hero.png" alt="Catering Inklusive" className="ct-includes-img" />
+              <img src="/assets/images/catering-hero.webp" alt="Catering Inklusive" className="ct-includes-img" />
               <div className="ct-includes-frame" />
               <div className="ct-includes-badge">
                 <span>Mogul</span>
@@ -199,7 +199,7 @@ export default function CateringPage() {
       ══════════════════════════════════════════════════════ */}
       <section className="ct-finale">
         <div className="ct-finale-bg">
-          <img src="/catering-hero.png" alt="" aria-hidden="true" />
+          <img src="/assets/images/catering-hero.webp" alt="" aria-hidden="true" />
         </div>
         <div className="ct-finale-overlay" />
         <div className="ct-finale-content reveal">

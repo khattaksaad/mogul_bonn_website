@@ -142,7 +142,7 @@ export default function Home() {
 
         {/* Background image with Ken Burns */}
         <div className="hero-media">
-          <img src="/hero-bg.png" alt="Mogul Bonn Restaurant Ambiance" />
+          <img src="/assets/images/hero-bg.webp" alt="Mogul Bonn Restaurant Ambiance" />
         </div>
 
         {/* Multi-gradient vignette */}
@@ -237,8 +237,8 @@ export default function Home() {
 
             <div className="story-image-wrap reveal-right">
               <img
-                src="/hero-bg.png"
-                alt="Mogul Bonn Atmosphäre"
+                src="/assets/images/mogul-interior.webp"
+                alt="Mogul Bonn Restaurant Interior"
                 className="story-image-main"
                 loading="lazy"
               />
@@ -247,8 +247,8 @@ export default function Home() {
                 <span className="badge-sub">Jahre<br />Tradition</span>
               </div>
               <img
-                src="/dish-1.png"
-                alt="Signature Dish"
+                src="/assets/images/samosay.webp"
+                alt="Sabzi Samosa Signature"
                 className="story-image-accent"
                 loading="lazy"
               />
@@ -276,12 +276,12 @@ export default function Home() {
         <div className="container" style={{ paddingRight: 0, maxWidth: '100%' }}>
           <div className="dishes-scroll-track" ref={trackRef}>
             {[
-              { img: '/dish-1.png', name: 'Lamb Biryani', desc: 'Basmatireis mit zartem Lammfleisch, Cashewnüssen, Rosinen und Gewürzen.', price: '17,90 €', num: '01' },
-              { img: '/dish-2.png', name: 'Butter Chicken', desc: 'Zartes Hühnerfleisch in Tomaten-Cashewnuss-Buttersoße — ein Klassiker.', price: '17,90 €', num: '02' },
-              { img: '/dish-3.png', name: 'Delhi Biryani', desc: 'Prachtvoller Mix aus Hühnerfleisch, Lammfleisch, Garnelen und Nüssen.', price: '19,90 €', num: '03' },
-              { img: '/dish-1.png', name: 'Palak Ghosht', desc: 'Gebratenes Lammfleisch mit kräftigem Blattspinat und besonderen Gewürzen.', price: '18,50 €', num: '04' },
-              { img: '/dish-2.png', name: 'Karahi Murgh', desc: 'Gebratene Hühnerfleischstücke mit Paprika, Zwiebeln, Tomaten, Knoblauch.', price: '16,50 €', num: '05' },
-              { img: '/catering-hero.png', name: 'Shahi Jhinga Masala', desc: 'Gebratene Garnelen mit Tomaten, frischen Zwiebeln und grüner Paprika.', price: '19,90 €', num: '06' },
+              { img: '/assets/images/lamb-biryani.webp', name: 'Lamb Biryani', desc: 'Basmatireis mit zartem Lammfleisch, Cashewnüssen, Rosinen und Gewürzen.', price: '17,90 €', num: '01' },
+              { img: '/assets/images/dish-2.webp', name: 'Butter Chicken', desc: 'Zartes Hühnerfleisch in Tomaten-Cashewnuss-Buttersoße — ein Klassiker.', price: '17,90 €', num: '02' },
+              { img: '/assets/images/chicken-biryani.webp', name: 'Chicken Biryani', desc: 'Feiner Basmati-Reis mit zartem Hühnerfleisch und Mogul-Gewürzen.', price: '16,90 €', num: '03' },
+              { img: '/assets/images/palak-ghosht.webp', name: 'Palak Ghosht', desc: 'Gebratenes Lammfleisch mit kräftigem Blattspinat und besonderen Gewürzen.', price: '18,50 €', num: '04' },
+              { img: '/assets/images/channa-masala.webp', name: 'Channa Masala', desc: 'Würzige Kichererbsen mit Ingwer, Knoblauch und aromatischen Gewürzen.', price: '15,50 €', num: '05' },
+              { img: '/assets/images/samosay.webp', name: 'Sabzi Samosa', desc: 'Knusprige Teigtaschen gefüllt mit gewürzten Kartoffeln und Gemüse.', price: '7,50 €', num: '06' },
             ].map((dish, i) => (
               <article className="dish-card" key={i}>
                 <div className="dish-card-img">
@@ -352,7 +352,7 @@ export default function Home() {
       {/* ═══ QUOTE / FULL BLEED CTA ════════════════════════════ */}
       <section className="fullbleed-cta">
         <div className="fullbleed-cta-bg">
-          <img src="/catering-hero.png" alt="" aria-hidden="true" />
+          <img src="/assets/images/catering-hero.webp" alt="" aria-hidden="true" />
         </div>
         <div className="fullbleed-cta-overlay" />
         <div className="fullbleed-cta-content reveal">
@@ -371,7 +371,7 @@ export default function Home() {
         <div className="container">
           <div className="catering-grid">
             <div className="catering-img-block reveal-left">
-              <img src="/catering-hero.png" alt="Mogul Catering Setup" loading="lazy" />
+              <img src="/assets/images/catering-hero.webp" alt="Mogul Catering Setup" loading="lazy" />
               <div className="catering-img-badge">
                 Events · Hochzeiten · Firmenfeiern
               </div>

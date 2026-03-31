@@ -139,7 +139,7 @@ export default function Menu() {
       {/* Hero */}
       <section className="menu-hero">
         <div className="menu-hero-bg">
-          <img src="/hero-bg.png" alt="Mogul Bonn Restaurant" />
+          <img src="/assets/images/hero-bg.webp" alt="Mogul Bonn Restaurant" />
         </div>
         <div className="menu-hero-content">
           <span className="menu-hero-eyebrow">The Mogul Collection</span>

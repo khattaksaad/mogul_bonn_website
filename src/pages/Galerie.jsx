@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
 const galleryItems = [
-  { img: '/dish-1.png',       label: 'Lamb Biryani',     wide: false, tall: false },
-  { img: '/dish-2.png',       label: 'Butter Chicken',   wide: true,  tall: false },
-  { img: '/dish-3.png',       label: 'Delhi Biryani',    wide: false, tall: false },
-  { img: '/catering-hero.png',label: 'Catering Event',   wide: false, tall: false },
-  { img: '/hero-bg.png',      label: 'Restaurant',       wide: true,  tall: false },
-  { img: '/dish-1.png',       label: 'Signature Dish',   wide: false, tall: false },
-  { img: '/dish-2.png',       label: 'Palak Gosht',      wide: false, tall: false },
-  { img: '/dish-3.png',       label: 'Murgh Tikka',      wide: false, tall: false },
-  { img: '/catering-hero.png',label: 'Private Dining',   wide: true,  tall: false },
+  { img: '/assets/images/lamb-biryani.webp',  label: 'Lamb Biryani',     wide: false, tall: false },
+  { img: '/assets/images/dish-2.webp',       label: 'Butter Chicken',   wide: true,  tall: false },
+  { img: '/assets/images/chicken-biryani.webp',label: 'Chicken Biryani',  wide: false, tall: false },
+  { img: '/assets/images/samosay.webp',      label: 'Sabzi Samosa',     wide: false, tall: false },
+  { img: '/assets/images/mogul-interior.webp',label: 'Restaurant',       wide: true,  tall: false },
+  { img: '/assets/images/palak-ghosht.webp',  label: 'Palak Ghosht',     wide: false, tall: false },
+  { img: '/assets/images/channa-masala.webp',label: 'Channa Masala',    wide: false, tall: false },
+  { img: '/assets/images/dish-3.webp',       label: 'Dal Masala',       wide: false, tall: false },
+  { img: '/assets/images/catering-hero.webp',label: 'Private Dining',   wide: true,  tall: false },
 ];
 
 export default function Galerie() {
@@ -22,7 +22,7 @@ export default function Galerie() {
       {/* Hero */}
       <section className="gallery-page-hero">
         <div className="gallery-page-hero-bg">
-          <img src="/catering-hero.png" alt="Mogul Bonn Gallery" />
+          <img src="/assets/images/catering-hero.webp" alt="Mogul Bonn Gallery" />
         </div>
         <div className="gallery-page-hero-content">
           <span className="label" style={{ display: 'block', marginBottom: '1rem', textAlign: 'center' }}>
