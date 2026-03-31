@@ -2642,14 +2642,33 @@ ul {
 
   .gallery-big-grid {
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
   }
 
   .gallery-big-item.wide {
     grid-column: span 2;
   }
 
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .story-image-wrap {
+    height: 400px;
+  }
+
+  .ct-packages {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .ct-hero h1 {
+    font-size: 3.5rem;
+  }
+
   .catering-full-img {
-    aspect-ratio: 4/3;
+    height: 300px;
   }
 
   .dishes-scroll-track {
@@ -2669,11 +2688,29 @@ ul {
 @media (max-width: 480px) {
   .gallery-big-grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
   }
 
-  .gallery-big-item.wide {
+  .gallery-big-item.wide,
+  .gallery-big-item.tall {
     grid-column: auto;
-    aspect-ratio: 1;
+    grid-row: auto;
+  }
+
+  .ct-hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .story-image-wrap {
+    height: 300px;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
   }
 
   .dish-card {
@@ -2683,6 +2720,10 @@ ul {
   .hero-actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .nav-actions {
+    display: none;
   }
 }
 
