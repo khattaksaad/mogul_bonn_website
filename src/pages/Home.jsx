@@ -173,14 +173,14 @@ export default function Home() {
             <Link to="/speisekarte" className="btn btn-gold">Speisekarte</Link>
             <button
               className="glf-button btn btn-gold"
-              data-glf-cuid="8f4c63b5-308c-432e-990b-057b82f2697c"
+              data-glf-cuid=""
               data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
             >
               Online Bestellen
             </button>
             <button
               className="glf-button btn btn-outline"
-              data-glf-cuid="8f4c63b5-308c-432e-990b-057b82f2697c"
+              data-glf-cuid=""
               data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
               data-glf-reservation="true"
             >
@@ -230,7 +230,7 @@ export default function Home() {
                 Jedes Gericht erzählt eine Geschichte — die Geschichte der Mogulküche, eine der
                 reichhaltigsten und vielseitigsten kulinarischen Traditionen der Welt.
               </p>
-              <div style={{ marginTop: '2.5rem' }} className="reveal" style={{ transitionDelay: '0.3s' }}>
+              <div className="reveal" style={{ marginTop: '2.5rem', transitionDelay: '0.3s' }}>
                 <Link to="/speisekarte" className="btn btn-gold">Speisekarte entdecken</Link>
               </div>
             </div>

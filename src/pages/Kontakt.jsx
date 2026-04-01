@@ -119,7 +119,7 @@ export default function Kontakt() {
               </p>
               <button
                 className="glf-button btn btn-gold"
-                data-glf-cuid="8f4c63b5-308c-432e-990b-057b82f2697c"
+                data-glf-cuid=""
                 data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
                 data-glf-reservation="true"
               >

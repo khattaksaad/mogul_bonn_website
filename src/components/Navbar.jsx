@@ -50,7 +50,7 @@ function Navbar() {
           {/* Online Order → triggers GloriaFood ordering popup */}
           <button
             className="glf-button nav-cta-order"
-            data-glf-cuid={RUID}
+            data-glf-cuid=""
             data-glf-ruid={RUID}
             aria-label="Online bestellen"
           >
@@ -60,7 +60,7 @@ function Navbar() {
           {/* Table Reservation → triggers GloriaFood reservation popup */}
           <button
             className="glf-button nav-cta btn"
-            data-glf-cuid={RUID}
+            data-glf-cuid=""
             data-glf-ruid={RUID}
             data-glf-reservation="true"
             aria-label="Tisch reservieren"
