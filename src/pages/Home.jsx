@@ -175,17 +175,18 @@ export default function Home() {
               className="glf-button btn btn-gold"
               data-glf-cuid=""
               data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+              aria-label="Online bestellen"
             >
               Online Bestellen
             </button>
-            <button
-              className="glf-button btn btn-outline"
-              data-glf-cuid=""
-              data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
-              data-glf-reservation="true"
+            <a
+              href="https://mogulbonn.de/reservation/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
             >
               Reservierung
-            </button>
+            </a>
           </div>
         </div>
 

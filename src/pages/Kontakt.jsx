@@ -117,14 +117,15 @@ export default function Kontakt() {
               <p className="kp-reserve-text">
                 Für Gruppen ab 8 Personen bitten wir um telefonische Vorankündigung.
               </p>
-              <button
-                className="glf-button btn btn-gold"
-                data-glf-cuid=""
-                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
-                data-glf-reservation="true"
+              <a
+                href="https://mogulbonn.de/reservation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-gold"
+                aria-label="Tisch reservieren"
               >
                 Tisch reservieren
-              </button>
+              </a>
             </div>
 
             {/* Socials */}

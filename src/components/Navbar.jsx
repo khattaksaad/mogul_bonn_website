@@ -32,6 +32,14 @@ function Navbar() {
     }
   });
 
+  // Extra init after component mount and navigation wrap
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (window.GloriaFood) window.GloriaFood.init();
+    }, 400); // 400ms is safe for most React renders + animations
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
   return (
     <nav className={`navbar${scrolled || menuOpen ? ' scrolled' : ''}`}>
       <div className="container nav-inner">
@@ -45,7 +53,7 @@ function Navbar() {
           <Link to="/kontakt" className="nav-link">Kontakt</Link>
         </div>
 
-        {/* GloriaFood CTA buttons */}
+        {/* CTA buttons */}
         <div className="nav-actions">
           {/* Online Order → triggers GloriaFood ordering popup */}
           <button
@@ -57,16 +65,16 @@ function Navbar() {
             Bestellen
           </button>
 
-          {/* Table Reservation → triggers GloriaFood reservation popup */}
-          <button
-            className="glf-button nav-cta btn"
-            data-glf-cuid=""
-            data-glf-ruid={RUID}
-            data-glf-reservation="true"
+          {/* Table Reservation → Now points to your ReDi page */}
+          <a
+            href="https://mogulbonn.de/reservation/"
+            className="nav-cta btn"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Tisch reservieren"
           >
             Reservieren
-          </button>
+          </a>
         </div>
 
         <button
