@@ -2943,3 +2943,86 @@ ul {
   color: var(--gold);
   border-color: var(--gold);
 }
+/* ═══════════════════════════════════════════════════════════════════
+   GLORIAFOOD OVERRIDES
+   The external script (ewm2.js) injects high-specificity CSS that forces
+   orange colors and Arial fonts. These rules reclaim our design system.
+═══════════════════════════════════════════════════════════════════ */
+
+.glf-button {
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--gold) !important;
+  padding: 0.6rem 1.6rem !important;
+  transition: var(--transition) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  text-decoration: none !important;
+  line-height: normal !important;
+  height: auto !important;
+  min-height: 0 !important;
+  width: auto !important;
+}
+
+/* Navbar specific sizing */
+.navbar .glf-button {
+  padding: 0.6rem 1.6rem !important;
+}
+
+/* Theme: Gold Filled (Bestellen Buttons) */
+.glf-button.nav-cta-order,
+.glf-button.btn-gold {
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+  border-color: var(--gold) !important;
+}
+
+.glf-button.nav-cta-order:hover,
+.glf-button.btn-gold:hover {
+  background: var(--gold-pale) !important;
+  border-color: var(--gold-pale) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 16px 40px rgba(201, 164, 88, 0.3) !important;
+}
+
+/* Theme: Outline (Reservierung Hero) */
+.glf-button.btn-outline {
+  background: transparent !important;
+  color: var(--cream) !important;
+  border: 1px solid rgba(242, 235, 224, 0.3) !important;
+}
+
+.glf-button.btn-outline:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  background: transparent !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Theme: Navbar Reservieren (Outline but gold) */
+.glf-button.nav-cta.btn {
+  background: transparent !important;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold) !important;
+  padding: 0.6rem 1.6rem !important;
+}
+
+.glf-button.nav-cta.btn:hover {
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+}
+
+/* Shared hover transitions */
+.glf-button:hover {
+  opacity: 1 !important;
+}
