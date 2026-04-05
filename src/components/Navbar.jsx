@@ -49,7 +49,7 @@ function Navbar() {
   }, [location.pathname]);
 
   return (
-    <nav className={`navbar${scrolled || menuOpen ? ' scrolled' : ''}`}>
+    <nav className={`navbar${scrolled ? ' scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
       <div className="container nav-inner">
         <Link to="/" className="nav-logo">MOGUL</Link>
 

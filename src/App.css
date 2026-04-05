@@ -252,6 +252,7 @@ ul {
   gap: 5px;
   background: none;
   border: none;
+  position: relative;
   z-index: 1001;
 }
 
@@ -2610,13 +2611,23 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .navbar.menu-open {
+    height: 100vh;
+    height: 100dvh; /* modern mobile viewport fix */
+    background: rgba(8, 7, 10, 0.92) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+  }
+
   .nav-links {
     display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 7, 10, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: transparent;
     flex-direction: column;
     justify-content: center;
     align-items: center;
