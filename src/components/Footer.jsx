@@ -47,13 +47,15 @@ function Footer() {
               <li><span>53111 Bonn</span></li>
               <li><a href="tel:+4922869556">+49 228 695569</a></li>
               <li>
-                <a
-                  href="https://royalblue-jaguar-568705.hostingersite.com/reservation/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  className="glf-button"
+                  data-glf-cuid=""
+                  data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+                  data-glf-reservation="true"
+                  style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', font: 'inherit', cursor: 'pointer', textAlign: 'left', textDecoration: 'none' }}
                 >
                   Tisch reservieren →
-                </a>
+                </button>
               </li>
             </ul>
           </div>

@@ -13,6 +13,8 @@ const HOURS = [
   { day: 'Sonntag',      time: '12:00 – 23:00' },
 ];
 
+const RUID = '8f4c63b5-308c-432e-990b-057b82f2697c';
+
 function getTodayIndex() {
   const d = new Date().getDay();
   return d === 0 ? 6 : d - 1;
@@ -179,14 +181,15 @@ export default function Home() {
             >
               Online Bestellen
             </button>
-            <a
-              href="https://mogulbonn.de/reservation/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
+            <button
+              className="glf-button btn btn-outline"
+              data-glf-cuid=""
+              data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+              data-glf-reservation="true"
+              aria-label="Tisch reservieren"
             >
               Reservierung
-            </a>
+            </button>
           </div>
         </div>
 
@@ -317,15 +320,16 @@ export default function Home() {
                   +49 228 695569
                 </a>
               </p>
-              <a
-                href="https://royalblue-jaguar-568705.hostingersite.com/reservation/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-gold"
+              <button
+                className="glf-button btn btn-gold"
+                data-glf-cuid=""
+                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+                data-glf-reservation="true"
+                aria-label="Tisch reservieren"
                 style={{ marginTop: '2.5rem', display: 'inline-flex' }}
               >
                 Tisch reservieren
-              </a>
+              </button>
             </div>
 
             <div className="reveal-right">

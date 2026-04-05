@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HOURS = [
   { day: 'Montag', time: '16:00 – 23:00' },
@@ -117,15 +118,15 @@ export default function Kontakt() {
               <p className="kp-reserve-text">
                 Für Gruppen ab 8 Personen bitten wir um telefonische Vorankündigung.
               </p>
-              <a
-                href="https://mogulbonn.de/reservation/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-gold"
+              <button
+                className="glf-button btn btn-gold"
+                data-glf-cuid=""
+                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+                data-glf-reservation="true"
                 aria-label="Tisch reservieren"
               >
                 Tisch reservieren
-              </a>
+              </button>
             </div>
 
             {/* Socials */}

@@ -7,6 +7,7 @@ import Menu from './pages/Menu';
 import Galerie from './pages/Galerie';
 import CateringPage from './pages/Catering';
 import Kontakt from './pages/Kontakt';
+import Reservation from './pages/Reservation';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/galerie"    element={<Galerie />} />
         <Route path="/catering"   element={<CateringPage />} />
         <Route path="/kontakt"    element={<Kontakt />} />
+        <Route path="/reservieren" element={<Reservation />} />
         {/* Legacy redirect aliases */}
         <Route path="/menu"       element={<Menu />} />
       </Routes>

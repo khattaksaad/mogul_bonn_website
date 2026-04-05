@@ -25,19 +25,27 @@ function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  // Re-init GloriaFood widget after React renders (it scans DOM for .glf-button)
+  // Re-bind GloriaFood widget after React renders
   useEffect(() => {
-    if (window.GloriaFood) {
-      window.GloriaFood.init();
-    }
-  });
-
-  // Extra init after component mount and navigation wrap
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (window.GloriaFood) window.GloriaFood.init();
-    }, 400); // 400ms is safe for most React renders + animations
-    return () => clearTimeout(timer);
+    const bindGloriaFood = () => {
+      if (typeof window.glfBindButtons === 'function') {
+        window.glfBindButtons();
+      }
+    };
+    
+    // Try binding immediately
+    bindGloriaFood();
+    
+    // The GloriaFood script loads asynchronously. We poll a few times
+    // to ensure the buttons are bound once the script is ready,
+    // and also to catch any dynamically loaded components.
+    const intervalId = setInterval(bindGloriaFood, 500);
+    const timeoutId = setTimeout(() => clearInterval(intervalId), 5000);
+    
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
   }, [location.pathname]);
 
   return (
@@ -65,16 +73,16 @@ function Navbar() {
             Bestellen
           </button>
 
-          {/* Table Reservation → Now points to your ReDi page */}
-          <a
-            href="https://mogulbonn.de/reservation/"
-            className="nav-cta btn"
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Table Reservation → Native GloriaFood Popup */}
+          <button
+            className="glf-button nav-cta btn"
+            data-glf-cuid=""
+            data-glf-ruid={RUID}
+            data-glf-reservation="true"
             aria-label="Tisch reservieren"
           >
             Reservieren
-          </a>
+          </button>
         </div>
 
         <button
