@@ -73,16 +73,14 @@ function Navbar() {
             Bestellen
           </button>
 
-          {/* Table Reservation → Native GloriaFood Popup */}
-          <button
-            className="glf-button nav-cta btn"
-            data-glf-cuid=""
-            data-glf-ruid={RUID}
-            data-glf-reservation="true"
+          {/* Table Reservation */}
+          <Link
+            to="/reservieren"
+            className="nav-cta btn"
             aria-label="Tisch reservieren"
           >
             Reservieren
-          </button>
+          </Link>
         </div>
 
         <button

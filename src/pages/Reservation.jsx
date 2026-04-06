@@ -58,16 +58,19 @@ export default function Reservation() {
               </p>
             </div>
 
-            <div className="iframe-wrapper" style={{ display: 'flex', justifyContent: 'center', padding: '3rem 0' }}>
-              <button 
-                className="glf-button btn btn-gold" 
-                data-glf-cuid="" 
-                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c" 
-                data-glf-reservation="true"
-                aria-label="Tisch online reservieren"
-              >
-                Tisch online reservieren
-              </button>
+            <div className="iframe-wrapper">
+              {/* 
+                We use an iframe to embed the ReDi form from the original site.
+                This keeps the user on the current domain while utilizing the existing booking system.
+              */}
+              <iframe 
+                src="https://mogulbonn.de/reservation/" 
+                title="Mogul Bonn Reservation Form"
+                className="reservation-iframe"
+                frameBorder="0"
+                scrolling="yes"
+                allowFullScreen
+              ></iframe>
             </div>
 
             <div className="reservation-footer-info">
