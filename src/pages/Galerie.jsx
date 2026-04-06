@@ -69,12 +69,14 @@ export default function Galerie() {
           <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 300, color: 'var(--cream)', marginBottom: '2.5rem' }}>
             Erleben Sie es <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>persönlich</em>
           </h2>
-          <Link
-            to="/reservieren"
-            className="btn btn-gold"
+          <button
+            className="glf-button btn btn-gold"
+            data-glf-cuid=""
+            data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+            data-glf-reservation="true"
           >
             Tisch reservieren
-          </Link>
+          </button>
         </div>
       </section>
     </div>
