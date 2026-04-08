@@ -1,5 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const LeafIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginTop: '-2px' }}>
+    <path d="M12 2L15 5C17.5 7.5 17.5 11.5 15 14L12 17L9 14C6.5 11.5 6.5 7.5 9 5L12 2Z" fill="#22c55e" />
+    <path d="M12 17V10" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" />
+  </svg>
+);
+
+const ChiliIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginTop: '-2px' }}>
+    <path d="M14.5 2.5l-1.5 3" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" />
+    <path d="M18 6c-2-2-5-2.5-7.5-1-4 2.5-6.5 8.5-6.5 13 0 3 2.5 5 5.5 5 4.5 0 9-5 9-11 0-3-1.5-5-2.5-6z" fill="#ef4444" />
+    <path d="M16 11c-1.5-1-3-1-4.5 0" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeLinecap="round" />
+  </svg>
+);
+
+
 /* ── Full Menu Data ───────────────────────────────────────────── */
 const menuData = {
   "Vorspeisen": {
@@ -171,6 +187,14 @@ export default function Menu() {
             <h2 className="menu-section-title">
               {menuData[active].emoji} {active}
             </h2>
+            <div className="menu-legend">
+              <div className="legend-item" title="Vegetarisch">
+                <LeafIcon /> <span>Veg</span>
+              </div>
+              <div className="legend-item" title="Scharf / Pikant">
+                <ChiliIcon /> <span>Scharf</span>
+              </div>
+            </div>
             <span className="menu-section-count">{items.length} Gerichte</span>
           </div>
 
@@ -179,9 +203,17 @@ export default function Menu() {
               <article className="menu-item-row" key={i}>
                 <div className="menu-item-left">
                   <div className="menu-item-name-row">
-                    {item.veg && <span className="veg-dot" title="Vegetarisch" aria-label="Vegetarisch" />}
+                    {item.veg && (
+                      <span className="veg-icon" title="Vegetarisch" aria-label="Vegetarisch">
+                        <LeafIcon />
+                      </span>
+                    )}
                     <h3 className="menu-item-name">{item.name}</h3>
-                    {item.spicy && <span className="spice-tag">🌶 Scharf</span>}
+                    {item.spicy && (
+                      <span className="spice-icon" title="Scharf" aria-label="Scharf">
+                        <ChiliIcon />
+                      </span>
+                    )}
                   </div>
                   <p className="menu-item-desc">{item.desc}</p>
                 </div>

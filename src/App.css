@@ -1316,6 +1316,31 @@ ul {
   gap: 0.7rem;
 }
 
+.menu-legend {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+}
+
+.legend-item svg {
+  width: 12px;
+  height: 12px;
+}
+
+.legend-item:first-child svg { color: #4ade80; }
+.legend-item:last-child svg { color: #ef4444; }
+
 .menu-item-name {
   font-family: var(--font-serif);
   font-size: 1.15rem;
@@ -1323,24 +1348,19 @@ ul {
   color: var(--cream);
 }
 
-.veg-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #4ade80;
-  border: 1.5px solid #4ade80;
-  display: inline-block;
+.veg-icon {
+  color: #4ade80;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.spice-tag {
-  font-family: var(--font-display);
-  font-size: 0.55rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #f97316;
-  border: 1px solid rgba(249, 115, 22, 0.3);
-  padding: 0.2rem 0.5rem;
+.spice-icon {
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0.2rem;
 }
 
 .menu-item-desc {
@@ -2693,6 +2713,17 @@ ul {
 
   .menu-hero {
     height: 50vh;
+  }
+
+  .menu-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .menu-legend {
+    width: 100%;
+    margin-top: 0.25rem;
   }
 
   .footer-bottom {
