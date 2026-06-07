@@ -181,15 +181,9 @@ export default function Home() {
             >
               Online Bestellen
             </button>
-            <button
-              className="glf-button btn btn-outline"
-              data-glf-cuid=""
-              data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
-              data-glf-reservation="true"
-              aria-label="Tisch reservieren"
-            >
+            <Link to="/reservieren" className="btn btn-outline" aria-label="Tisch reservieren">
               Reservierung
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -320,16 +314,14 @@ export default function Home() {
                   +49 228 695569
                 </a>
               </p>
-              <button
-                className="glf-button btn btn-gold"
-                data-glf-cuid=""
-                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
-                data-glf-reservation="true"
+              <Link
+                to="/reservieren"
+                className="btn btn-gold"
                 aria-label="Tisch reservieren"
                 style={{ marginTop: '2.5rem', display: 'inline-flex' }}
               >
                 Tisch reservieren
-              </button>
+              </Link>
             </div>
 
             <div className="reveal-right">

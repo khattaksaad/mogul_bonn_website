@@ -74,15 +74,13 @@ function Navbar() {
           </button>
 
           {/* Table Reservation */}
-          <button
-            className="glf-button nav-cta btn"
-            data-glf-cuid=""
-            data-glf-ruid={RUID}
-            data-glf-reservation="true"
+          <Link
+            to="/reservieren"
+            className="nav-cta btn"
             aria-label="Tisch reservieren"
           >
             Reservieren
-          </button>
+          </Link>
         </div>
 
         <button

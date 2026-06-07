@@ -1,28 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 export default function Reservation() {
-  const [formData, setFormData] = useState({
-    date: '',
-    time: '',
-    guests: '2',
-    name: '',
-    phone: '',
-    email: '',
-    notes: ''
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Da die direkte Einbindung des ReDi-Backend-API-Schlüssels im Browser aus Sicherheitsgründen blockiert wird, haben wir hier ein vollständig natives Frontend für Sie entwickelt!');
-  };
+  const RUID = '8f4c63b5-308c-432e-990b-057b82f2697c';
 
   return (
     <div className="reservation-page" style={{ paddingTop: '80px', minHeight: '100vh', background: 'var(--ink)' }}>
@@ -61,49 +45,15 @@ export default function Reservation() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="custom-reservation-form" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-               <div className="form-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                   <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Datum</label>
-                   <input type="date" name="date" required value={formData.date} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }} />
-                 </div>
-                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                   <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Uhrzeit</label>
-                   <input type="time" name="time" required value={formData.time} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }} />
-                 </div>
-                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                   <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Personen</label>
-                   <select name="guests" value={formData.guests} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }}>
-                     {[1,2,3,4,5,6,7,8].map(n => <option key={n} value={n} style={{ background: 'var(--ink)' }}>{n} {n === 1 ? 'Person' : 'Personen'}</option>)}
-                   </select>
-                 </div>
-               </div>
-
-               <div className="form-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                   <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Name</label>
-                   <input type="text" name="name" placeholder="Ihr Vor- und Nachname" required value={formData.name} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }} />
-                 </div>
-                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                   <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Telefon</label>
-                   <input type="tel" name="phone" placeholder="Ihre Handynummer" required value={formData.phone} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }} />
-                 </div>
-               </div>
-
-               <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                 <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>E-Mail-Adresse</label>
-                 <input type="email" name="email" placeholder="Ihre E-Mail für die Bestätigung" required value={formData.email} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none' }} />
-               </div>
-
-               <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                 <label style={{ color: 'var(--gold)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Besondere Wünsche (Optional)</label>
-                 <textarea name="notes" rows="4" placeholder="Allergien, Präferenz für Fensterplatz..." value={formData.notes} onChange={handleChange} style={{ padding: '0.8rem', background: 'transparent', border: '1px solid var(--gold-border)', color: 'var(--cream)', outline: 'none', resize: 'vertical' }}></textarea>
-               </div>
-
-               <button type="submit" className="btn btn-gold" style={{ width: '100%', marginTop: '1.5rem', padding: '1rem', border: 'none', fontSize: '1rem', cursor: 'pointer', fontFamily: 'var(--font-display)', textTransform: 'uppercase' }}>
-                 Jetzt Reservierungsanfrage Senden
-               </button>
-            </form>
+            <div style={{ width: '100%', height: '700px', marginTop: '2rem' }}>
+              <iframe 
+                src="https://tally.so/embed/aQzjaq?alignLeft=1&hideTitle=1&transparentBackground=1" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 'none' }}
+                title="Mogul Bonn Reservation Form"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
