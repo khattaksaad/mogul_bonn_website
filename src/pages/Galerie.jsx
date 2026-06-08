@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const galleryItems = [
   { img: '/assets/images/lamb-biryani.webp',  label: 'Lamb Biryani',     wide: false, tall: true },
@@ -20,6 +21,12 @@ export default function Galerie() {
 
   return (
     <div className="gallery-page">
+      <SEO 
+        title="Galerie & Impressionen" 
+        description="Werfen Sie einen Blick in das Mogul Bonn. Bilder unserer authentischen Gerichte wie Biryani, Samosa und Curry, sowie unseres gemütlichen Restaurants."
+        keywords="Mogul Bonn Bilder, Indisches Restaurant Fotos Bonn, Heerstraße 64 Restaurant, Biryani Bilder, Halal Restaurant Galerie"
+        canonicalUrl="/galerie"
+      />
       {/* Hero */}
       <section className="gallery-page-hero">
         <div className="gallery-page-hero-bg">

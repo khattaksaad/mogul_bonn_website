@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 
 const LeafIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginTop: '-2px' }}>
@@ -152,6 +153,12 @@ export default function Menu() {
 
   return (
     <div className="menu-page">
+      <SEO 
+        title="Speisekarte & Menü" 
+        description="Entdecken Sie unsere Speisekarte mit authentischen indischen und pakistanischen Gerichten. Von knusprigen Samosas bis zu würzigem Biryani und Tandoori."
+        keywords="Indische Speisekarte Bonn, Pakistanisches Essen Menü, Biryani bestellen Bonn, Halal Restaurant Speisekarte, Curry Tikka Masala"
+        canonicalUrl="/speisekarte"
+      />
       {/* Hero */}
       <section className="menu-hero">
         <div className="menu-hero-bg">

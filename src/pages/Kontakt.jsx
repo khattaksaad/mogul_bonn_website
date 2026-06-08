@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const HOURS = [
   { day: 'Montag', time: '16:00 – 23:00' },
@@ -52,6 +53,12 @@ export default function Kontakt() {
 
   return (
     <div className="kp-page">
+      <SEO 
+        title="Kontakt & Anfahrt" 
+        description="Besuchen Sie das Mogul Bonn in der Heerstraße 64, 53111 Bonn. Rufen Sie uns an unter 0228 695569. Wir freuen uns auf Ihren Besuch!"
+        keywords="Mogul Bonn Adresse, Heerstraße 64 Bonn, Indisches Restaurant Kontakt, Pakistanisches Restaurant Öffnungszeiten, Tisch reservieren Telefon"
+        canonicalUrl="/kontakt"
+      />
 
       {/* ── PAGE HEADER ─────────────────────────────────────────── */}
       <div className="container">

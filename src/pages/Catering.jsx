@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import SEO from '../components/SEO';
 
 const PACKAGES = [
   {
@@ -96,6 +97,12 @@ export default function CateringPage() {
 
   return (
     <div className="ct-page">
+      <SEO 
+        title="Event & Hochzeits-Catering" 
+        description="Mogul Bonn Catering für Hochzeiten, Firmenfeiern und private Events. Authentisches indisches & pakistanisches Essen, Live-Cooking und Buffet in ganz NRW."
+        keywords="Indisches Catering Bonn, Pakistanisches Event Catering NRW, Hochzeitsessen Bonn, Halal Catering, Indisches Buffet Catering"
+        canonicalUrl="/catering"
+      />
 
       {/* ══════════════════════════════════════════════════════
           HERO — Full-bleed cinematic

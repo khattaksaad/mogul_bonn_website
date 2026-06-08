@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 
 export default function Reservation() {
 
@@ -10,6 +11,12 @@ export default function Reservation() {
 
   return (
     <div className="reservation-page" style={{ paddingTop: '80px', minHeight: '100vh', background: 'var(--ink)' }}>
+      <SEO 
+        title="Tisch Reservieren" 
+        description="Reservieren Sie jetzt Ihren Tisch im Mogul Bonn. Genießen Sie authentische indische Küche in der Heerstraße. Für große Gruppen bitte anrufen."
+        keywords="Tisch reservieren Mogul Bonn, Indisches Restaurant Reservierung, Essen gehen Bonn Zentrum, Pakistanisches Restaurant Tisch"
+        canonicalUrl="/reservieren"
+      />
       {/* ── HERO SECTION ───────────────────────────────────── */}
       <section className="menu-hero" style={{ position: 'relative', height: '45vh', overflow: 'hidden' }}>
         <div className="menu-hero-bg" style={{ position: 'absolute', inset: 0 }}>

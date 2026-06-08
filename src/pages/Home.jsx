@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Reviews from '../components/Reviews';
+import SEO from '../components/SEO';
 
 /* Real opening hours data */
 const HOURS = [
@@ -139,6 +140,12 @@ export default function Home() {
 
   return (
     <main>
+      <SEO 
+        title="Indisches & Pakistanisches Restaurant" 
+        description="Authentische Mogul-Küche seit über 30 Jahren in Bonn. Genießen Sie Biryani, Curry, Tandoori und mehr in gemütlicher Atmosphäre. Heerstraße 64."
+        keywords="Indisches Restaurant Bonn, Pakistanisches Restaurant Bonn, Mogul Bonn, Biryani Bonn Zentrum, Halal Restaurant NRW, Curry, Heerstraße"
+        canonicalUrl="/"
+      />
       {/* ═══ HERO ════════════════════════════════════════════════ */}
       <section className="hero" ref={heroRef}>
 
