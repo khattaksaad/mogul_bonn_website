@@ -20,9 +20,9 @@ export default function Reservation() {
       {/* ── HERO SECTION ───────────────────────────────────── */}
       <section className="menu-hero" style={{ position: 'relative', height: '45vh', overflow: 'hidden' }}>
         <div className="menu-hero-bg" style={{ position: 'absolute', inset: 0 }}>
-          <img src="/assets/images/hero-bg.webp" alt="Mogul Bonn Reservation" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.4)' }} />
+          <img src="/assets/images/hero-bg.webp" alt="Mogul Bonn Reservation" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85) saturate(1.1)' }} />
         </div>
-        <div className="menu-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent, var(--ink))' }} />
+        <div className="menu-hero-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(250, 250, 245, 0.65), var(--ink))' }} />
         <div className="menu-hero-content reveal active" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <span className="label" style={{ display: 'block', marginBottom: '1rem', color: 'var(--gold)', letterSpacing: '0.25em' }}>
             Erleben Sie den Genuss

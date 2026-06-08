@@ -7,18 +7,23 @@
 
 /* ── Design Tokens ────────────────────────────────────────────── */
 :root {
-  --ink: #08070A;
-  --ink-2: #111016;
-  --ink-3: #1A1820;
-  --ink-4: #22202A;
-  --gold: #C9A458;
-  --gold-2: #A8832D;
-  --gold-pale: #F0D98A;
-  --gold-muted: rgba(201, 164, 88, 0.15);
-  --gold-border: rgba(201, 164, 88, 0.25);
-  --cream: #F2EBE0;
-  --cream-dim: rgba(242, 235, 224, 0.55);
-  --cream-ghost: rgba(242, 235, 224, 0.12);
+  /* Soft Ivory & Sand backgrounds */
+  --ink: #FAFAF5;
+  --ink-2: #F2EFE9;
+  --ink-3: #EBE7DF;
+  --ink-4: #E3DED4;
+  
+  /* Terracotta & Saffron accents */
+  --gold: #C25E3B;
+  --gold-2: #A54F32;
+  --gold-pale: #D97A5E;
+  --gold-muted: rgba(194, 94, 59, 0.12);
+  --gold-border: rgba(42, 36, 33, 0.1);
+  
+  /* Deep Charcoal text */
+  --cream: #2A2421;
+  --cream-dim: rgba(42, 36, 33, 0.65);
+  --cream-ghost: rgba(42, 36, 33, 0.05);
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', sans-serif;
@@ -142,7 +147,7 @@ ul {
 }
 
 .navbar.scrolled {
-  background: rgba(8, 7, 10, 0.88);
+  background: rgba(250, 250, 245, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--gold-border);
@@ -302,7 +307,7 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.28) saturate(0.65);
+  filter: brightness(0.85) saturate(1.1);
   transform-origin: center center;
   animation: heroPan 28s ease-in-out infinite alternate;
   will-change: transform;
@@ -332,40 +337,23 @@ ul {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, rgba(8, 7, 10, 0.7) 100%),
+    radial-gradient(ellipse at center, rgba(250, 250, 245, 0.8) 0%, rgba(250, 250, 245, 0.4) 60%),
     linear-gradient(to bottom,
-      rgba(8, 7, 10, 0.55) 0%,
-      rgba(8, 7, 10, 0) 25%,
-      rgba(8, 7, 10, 0) 55%,
-      rgba(8, 7, 10, 0.85) 80%,
-      rgba(8, 7, 10, 1) 100%);
+      rgba(250, 250, 245, 0.85) 0%,
+      rgba(250, 250, 245, 0.5) 30%,
+      rgba(250, 250, 245, 0.5) 60%,
+      rgba(250, 250, 245, 0.95) 90%,
+      var(--ink) 100%);
 }
 
 /* ── Floating gold particles canvas ── */
 .hero-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  display: none !important;
 }
 
 /* ── Gold horizontal sweep line ── */
 
-/* ── Bottom gold glow ── */
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(to right, transparent 0%, var(--gold) 50%, transparent 100%);
-  z-index: 4;
-  opacity: 0;
-  animation: fadeIn 1s ease 1.8s forwards;
-}
+/* ── Bottom gold glow (removed for organic theme) ── */
 
 /* ── Hero content wrapper (parallax target) ── */
 .hero-content {
@@ -585,7 +573,7 @@ ul {
   background: transparent;
   color: var(--cream);
   padding: 1.1rem 2.8rem;
-  border: 1px solid rgba(242, 235, 224, 0.3);
+  border: 1px solid rgba(42, 36, 33, 0.3);
 }
 
 .btn-outline:hover {
@@ -951,14 +939,14 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.2) saturate(0.5);
+  filter: brightness(0.85) saturate(1.1);
 }
 
 .fullbleed-cta-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(8, 7, 10, 0.55);
+  background: rgba(250, 250, 245, 0.7);
 }
 
 .fullbleed-cta-content {
@@ -1169,14 +1157,14 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.25) saturate(0.6);
+  filter: brightness(0.85) saturate(1.1);
 }
 
 .menu-hero-bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 30%, var(--ink) 100%);
+  background: linear-gradient(to bottom, rgba(250, 250, 245, 0.65) 0%, rgba(250, 250, 245, 0.65) 30%, var(--ink) 100%);
 }
 
 .menu-hero-content {
@@ -1424,7 +1412,7 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.2);
+  filter: brightness(0.85) saturate(1.1);
 }
 
 .gallery-page-hero-bg::after {
@@ -1516,7 +1504,7 @@ ul {
   left: 0;
   right: 0;
   padding: 1.25rem 1.5rem;
-  background: linear-gradient(to top, rgba(8, 7, 10, 0.9), transparent);
+  background: linear-gradient(to top, var(--ink), transparent);
   font-family: var(--font-serif);
   font-size: 0.95rem;
   color: var(--cream);
@@ -2082,7 +2070,7 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.28) saturate(0.6);
+  filter: brightness(0.85) saturate(1.1);
   animation: heroPan 30s ease-in-out infinite alternate;
 }
 
@@ -2091,8 +2079,8 @@ ul {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(to right, rgba(8, 7, 10, 0.85) 40%, transparent 100%),
-    linear-gradient(to top, rgba(8, 7, 10, 1) 0%, transparent 50%);
+    linear-gradient(to right, rgba(250, 250, 245, 0.85) 40%, transparent 100%),
+    linear-gradient(to top, var(--ink) 0%, transparent 50%);
 }
 
 .ct-hero-content {
@@ -2156,7 +2144,7 @@ ul {
   z-index: 3;
   display: flex;
   border-top: 1px solid var(--gold-border);
-  background: rgba(8, 7, 10, 0.7);
+  background: rgba(250, 250, 245, 0.8);
   backdrop-filter: blur(12px);
 }
 
@@ -2447,14 +2435,14 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.22) saturate(0.5);
+  filter: brightness(0.85) saturate(1.1);
 }
 
 .ct-finale-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(ellipse at center, rgba(8, 7, 10, 0.3) 0%, rgba(8, 7, 10, 0.8) 100%);
+  background: radial-gradient(ellipse at center, rgba(250, 250, 245, 0.3) 0%, var(--ink) 100%);
 }
 
 .ct-finale-content {
@@ -2634,7 +2622,7 @@ ul {
   .navbar.menu-open {
     height: 100vh;
     height: 100dvh; /* modern mobile viewport fix */
-    background: rgba(8, 7, 10, 0.92) !important;
+    background: rgba(250, 250, 245, 0.95) !important;
     backdrop-filter: blur(18px) !important;
     -webkit-backdrop-filter: blur(18px) !important;
   }
@@ -3046,7 +3034,7 @@ ul {
 .glf-button.btn-outline {
   background: transparent !important;
   color: var(--cream) !important;
-  border: 1px solid rgba(242, 235, 224, 0.3) !important;
+  border: 1px solid rgba(42, 36, 33, 0.3) !important;
 }
 
 .glf-button.btn-outline:hover {
@@ -3206,3 +3194,120 @@ ul {
     gap: 3rem;
   }
 }
+
+/* ── Interactive Altstadt Map ── */
+.interactive-altstadt-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: var(--ink-2);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.route-path {
+  stroke-dashoffset: 1500;
+  stroke-dasharray: 1500;
+  transition: stroke-dashoffset 2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.route-path.active {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.landmark-circle {
+  transition: r 0.3s var(--ease), fill 0.3s var(--ease);
+}
+
+.landmark:hover .landmark-circle {
+  r: 18;
+  fill: var(--gold-muted);
+}
+
+.landmark {
+  cursor: pointer;
+}
+
+.landmark text {
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.landmark:hover text {
+  transform: translateY(-3px);
+}
+
+.cherry-petal {
+  position: absolute;
+  top: -20px;
+  background-color: #ffb7c5;
+  border-radius: 10px 0px 10px 0px;
+  pointer-events: none;
+  animation-name: fallAndSway;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  box-shadow: 0 0 10px rgba(255, 183, 197, 0.4);
+  z-index: 10;
+}
+
+@keyframes fallAndSway {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(200px) rotate(180deg) translateX(30px);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(420px) rotate(360deg) translateX(-20px);
+    opacity: 0;
+  }
+}
+
+.map-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 20;
+}
+
+.map-controls button {
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--gold-border);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.2s var(--ease);
+}
+
+.map-controls button:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+

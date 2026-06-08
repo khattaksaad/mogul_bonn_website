@@ -13,7 +13,7 @@ const HOURS = [
 ];
 
 const GMAPS_LINK = 'https://www.google.com/maps/place/Indisches+Restaurant+Mogul/@50.7374,7.0982,17z';
-const GMAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2527.5!2d7.0982!3d50.7374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee74b39c9b4c5%3A0x7da6c9c8c88e013a!2sHeerstra%C3%9Fe%2064%2C%2053111%20Bonn!5e0!3m2!1sde!2sde!4v1680000000000!5m2!1sde!2sde&style=feature:all|element:labels.text.fill|color:0xc9a458&style=feature:water|color:0x08070a&style=feature:road|color:0x1a1820&style=feature:landscape|color:0x14121a';
+const GMAPS_EMBED = 'https://maps.google.com/maps?q=Indisches%20Restaurant%20Mogul%20Bonn&t=&z=17&ie=UTF8&iwloc=&output=embed';
 
 function getTodayIndex() {
   const d = new Date().getDay();
@@ -28,6 +28,7 @@ function isCurrentlyOpen() {
   if (day >= 0 && day <= 3) return h >= 16 && h < 23; // Mo, Mi, Do
   return h >= 12 && h < 23; // Fr, Sa, So
 }
+
 
 export default function Kontakt() {
   useEffect(() => {
@@ -150,59 +151,18 @@ export default function Kontakt() {
           {/* ── RIGHT: Premium map card ──────────────────── */}
           <div className="kp-map-card reveal-right">
 
-            {/* Map preview / interactive area */}
-            <div className="kp-map-area">
-              {!showMap ? (
-                /* Static preview with animated pin — click to load live map */
-                <button
-                  className="kp-map-preview"
-                  onClick={() => setShowMap(true)}
-                  aria-label="Karte anzeigen"
-                >
-                  {/* Dark grid overlay that looks like a map */}
-                  <div className="kp-map-grid" aria-hidden="true">
-                    <div className="kp-map-grid-lines" />
-                    <div className="kp-map-street kp-street-h" style={{ top: '48%', left: 0, right: 0 }} />
-                    <div className="kp-map-street kp-street-h" style={{ top: '32%', left: 0, right: 0, opacity: 0.4 }} />
-                    <div className="kp-map-street kp-street-h" style={{ top: '65%', left: 0, right: 0, opacity: 0.35 }} />
-                    <div className="kp-map-street kp-street-v" style={{ left: '42%', top: 0, bottom: 0 }} />
-                    <div className="kp-map-street kp-street-v" style={{ left: '68%', top: 0, bottom: 0, opacity: 0.4 }} />
-                    <div className="kp-map-street kp-street-v" style={{ left: '22%', top: 0, bottom: 0, opacity: 0.3 }} />
-                    <div className="kp-map-label" style={{ top: '44%', left: '14%' }}>Heerstraße</div>
-                    <div className="kp-map-label" style={{ top: '27%', left: '55%', opacity: 0.5 }}>Meckenheimer Allee</div>
-                  </div>
-
-                  {/* Animated pin */}
-                  <div className="kp-pin-wrap">
-                    <div className="kp-pin-pulse" />
-                    <div className="kp-pin-pulse kp-pin-pulse--2" />
-                    <div className="kp-pin">
-                      <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 0C6.268 0 0 6.268 0 14c0 10.5 14 22 14 22S28 24.5 28 14C28 6.268 21.732 0 14 0z" fill="#C9A458" />
-                        <circle cx="14" cy="14" r="5" fill="#08070A" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Click to activate overlay */}
-                  <div className="kp-map-activate">
-                    <span>Karte anzeigen</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M15 3h6m0 0v6m0-6L10 14M21 13v8H3V3h8" /></svg>
-                  </div>
-                </button>
-              ) : (
-                /* Live Google Maps iframe — loaded on demand */
-                <iframe
-                  className="kp-iframe"
-                  title="Mogul Bonn Standort"
-                  src={GMAPS_EMBED}
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  style={{ border: 0 }}
-                  onLoad={() => setMapLoaded(true)}
-                />
-              )}
+            {/* Standard Google Maps Embed */}
+            <div className="kp-map-area" style={{ padding: 0, overflow: 'hidden' }}>
+              <iframe
+                src={GMAPS_EMBED}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mogul Bonn Standort auf Google Maps"
+              ></iframe>
             </div>
 
             {/* Info bar below the map */}

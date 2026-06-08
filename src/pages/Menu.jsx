@@ -4,7 +4,7 @@ import SEO from '../components/SEO';
 const LeafIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginTop: '-2px' }}>
     <path d="M12 2L15 5C17.5 7.5 17.5 11.5 15 14L12 17L9 14C6.5 11.5 6.5 7.5 9 5L12 2Z" fill="#22c55e" />
-    <path d="M12 17V10" stroke="rgba(255,255,255,0.3)" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M12 17V10" stroke="rgba(42, 36, 33, 0.2)" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 );
 
@@ -12,7 +12,7 @@ const ChiliIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ verticalAlign: 'middle', marginTop: '-2px' }}>
     <path d="M14.5 2.5l-1.5 3" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" />
     <path d="M18 6c-2-2-5-2.5-7.5-1-4 2.5-6.5 8.5-6.5 13 0 3 2.5 5 5.5 5 4.5 0 9-5 9-11 0-3-1.5-5-2.5-6z" fill="#ef4444" />
-    <path d="M16 11c-1.5-1-3-1-4.5 0" stroke="rgba(255,255,255,0.2)" strokeWidth="1.2" strokeLinecap="round" />
+    <path d="M16 11c-1.5-1-3-1-4.5 0" stroke="rgba(42, 36, 33, 0.2)" strokeWidth="1.2" strokeLinecap="round" />
   </svg>
 );
 
