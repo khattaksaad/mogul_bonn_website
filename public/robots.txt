@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mogulbonn.de/sitemap.xml
+Sitemap: https://mogulbonn.com/sitemap.xml

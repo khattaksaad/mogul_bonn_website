@@ -21,21 +21,21 @@ export default function SEO({
       <meta name="keywords" content={keywords || defaultKeywords} />
       
       {/* Canonical URL to prevent duplicate content issues */}
-      {canonicalUrl && <link rel="canonical" href={`https://mogulbonn.de${canonicalUrl}`} />}
+      {canonicalUrl && <link rel="canonical" href={`https://mogulbonn.com${canonicalUrl}`} />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://mogulbonn.de${canonicalUrl || ''}`} />
+      <meta property="og:url" content={`https://mogulbonn.com${canonicalUrl || ''}`} />
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={description || defaultDescription} />
-      <meta property="og:image" content="https://mogulbonn.de/hero-bg.png" />
+      <meta property="og:image" content="https://mogulbonn.com/hero-bg.png" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={`https://mogulbonn.de${canonicalUrl || ''}`} />
+      <meta property="twitter:url" content={`https://mogulbonn.com${canonicalUrl || ''}`} />
       <meta property="twitter:title" content={siteTitle} />
       <meta property="twitter:description" content={description || defaultDescription} />
-      <meta property="twitter:image" content="https://mogulbonn.de/hero-bg.png" />
+      <meta property="twitter:image" content="https://mogulbonn.com/hero-bg.png" />
 
       {/* Inject Page-Specific Schema.org JSON-LD if provided */}
       {schemaData && (

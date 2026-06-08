@@ -1,4 +1,28 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "mogulbonn.de"
+        }
+      ],
+      "destination": "https://mogulbonn.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mogulbonn.de"
+        }
+      ],
+      "destination": "https://mogulbonn.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
