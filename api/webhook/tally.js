@@ -1,9 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { Resend } from 'resend';
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export default async function handler(req, res) {
   // Tally webhooks send POST requests
   if (req.method !== 'POST') {
@@ -11,6 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const payload = req.body;
     
     // Tally payload validation

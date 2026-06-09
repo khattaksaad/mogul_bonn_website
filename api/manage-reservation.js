@@ -1,8 +1,6 @@
 import { sql } from '@vercel/postgres';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).send('Method Not Allowed');
@@ -15,6 +13,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     // 1. Get the reservation details from the database
     const result = await sql`SELECT * FROM reservations WHERE id = ${id}`;
     if (result.rowCount === 0) {
