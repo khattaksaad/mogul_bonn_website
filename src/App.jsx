@@ -8,6 +8,7 @@ import Galerie from './pages/Galerie';
 import CateringPage from './pages/Catering';
 import Kontakt from './pages/Kontakt';
 import Reservation from './pages/Reservation';
+import Admin from './pages/Admin';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/catering"   element={<CateringPage />} />
         <Route path="/kontakt"    element={<Kontakt />} />
         <Route path="/reservieren" element={<Reservation />} />
+        <Route path="/admin"      element={<Admin />} />
         {/* Legacy redirect aliases */}
         <Route path="/menu"       element={<Menu />} />
       </Routes>
