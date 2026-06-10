@@ -60,7 +60,11 @@ function Footer() {
 
         <div className="footer-bottom">
           <p>&copy; {year} Mogul Bonn Restaurant. Alle Rechte vorbehalten.</p>
-          <a href="/impressum">Impressum</a>
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <Link to="/impressum" style={{ color: 'inherit', textDecoration: 'none' }}>Impressum</Link>
+            <span style={{ color: 'var(--cream-dim)' }}>|</span>
+            <Link to="/datenschutz" style={{ color: 'inherit', textDecoration: 'none' }}>Datenschutz</Link>
+          </div>
         </div>
       </div>
     </footer>

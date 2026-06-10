@@ -9,6 +9,8 @@ import CateringPage from './pages/Catering';
 import Kontakt from './pages/Kontakt';
 import Reservation from './pages/Reservation';
 import Admin from './pages/Admin';
+import Impressum from './pages/Impressum';
+import Datenschutz from './pages/Datenschutz';
 import './App.css';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/kontakt"    element={<Kontakt />} />
         <Route path="/reservieren" element={<Reservation />} />
         <Route path="/admin"      element={<Admin />} />
+        <Route path="/impressum"  element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
         {/* Legacy redirect aliases */}
         <Route path="/menu"       element={<Menu />} />
       </Routes>
