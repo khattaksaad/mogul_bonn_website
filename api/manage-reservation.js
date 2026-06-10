@@ -8,11 +8,16 @@ export default async function handler(req, res) {
 
   const { id, action } = req.query;
 
-  if (!id || !action || !['approve', 'reject'].includes(action)) {
+  if (!id || !action || !['approve', 'reject', 'delete'].includes(action)) {
     return res.status(400).send('Invalid request parameters');
   }
 
   try {
+    if (action === 'delete') {
+      await sql`DELETE FROM reservations WHERE id = ${id}`;
+      return res.status(200).send('Deleted successfully');
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const result = await sql`SELECT * FROM reservations WHERE id = ${id}`;

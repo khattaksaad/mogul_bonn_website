@@ -214,9 +214,27 @@ const Admin = () => {
                       >
                         Reject
                       </button>
+                      <button 
+                        onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }}
+                        style={{ padding: '8px 16px', background: 'transparent', color: '#c62828', border: '1px solid #c62828', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
+                        onMouseOver={e => e.target.style.opacity = 0.8}
+                        onMouseOut={e => e.target.style.opacity = 1}
+                      >
+                        Delete
+                      </button>
                     </div>
                   ) : (
-                    <span style={{ color: 'var(--cream-ghost)', fontFamily: 'var(--font-display)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Processed</span>
+                    <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                      <span style={{ color: 'var(--cream-dim)', opacity: 0.5, fontFamily: 'var(--font-display)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Processed</span>
+                      <button 
+                        onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }}
+                        style={{ padding: '6px 12px', background: 'transparent', color: '#c62828', border: '1px solid #c62828', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
+                        onMouseOver={e => e.target.style.opacity = 0.8}
+                        onMouseOut={e => e.target.style.opacity = 1}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   )}
                 </td>
               </tr>
