@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './Admin.css';
+
 const Admin = () => {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -123,14 +125,14 @@ const Admin = () => {
   });
 
   return (
-    <div style={{ padding: '60px 20px', maxWidth: 'var(--container)', margin: '0 auto', minHeight: '80vh', background: 'var(--ink)' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px', flexWrap: 'wrap', gap: '15px' }}>
-        <h1 style={{ color: 'var(--cream)', fontSize: 'var(--fs-h2)', margin: 0, fontFamily: 'var(--font-serif)', fontWeight: 400 }}>Reservations</h1>
-        <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
+    <div className="admin-container">
+      <div className="admin-header">
+        <h1 className="admin-title">Reservations</h1>
+        <div className="admin-controls">
           <select 
             value={timeFilter} 
             onChange={(e) => setTimeFilter(e.target.value)}
-            style={{ padding: '10px 15px', fontSize: 'var(--fs-label)', fontFamily: 'var(--font-display)', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid var(--gold-border)', background: 'var(--ink-2)', color: 'var(--cream)', cursor: 'pointer', outline: 'none' }}
+            className="admin-select"
           >
             <option value="All">All Dates</option>
             <option value="Today">Today</option>
@@ -140,7 +142,7 @@ const Admin = () => {
           <select 
             value={filter} 
             onChange={(e) => setFilter(e.target.value)}
-            style={{ padding: '10px 15px', fontSize: 'var(--fs-label)', fontFamily: 'var(--font-display)', letterSpacing: '0.1em', textTransform: 'uppercase', border: '1px solid var(--gold-border)', background: 'var(--ink-2)', color: 'var(--cream)', cursor: 'pointer', outline: 'none' }}
+            className="admin-select"
           >
             <option value="All">All Statuses</option>
             <option value="Pending">Pending</option>
@@ -156,32 +158,32 @@ const Admin = () => {
         </div>
       </div>
 
-      <div style={{ overflowX: 'auto', background: 'var(--ink-2)', border: '1px solid var(--gold-border)' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '800px', color: 'var(--cream)' }}>
+      <div className="admin-table-wrapper">
+        <table className="admin-table">
           <thead>
-            <tr style={{ background: 'var(--ink-3)', borderBottom: '1px solid var(--gold-border)' }}>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Date & Time</th>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Name</th>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Guests</th>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Contact</th>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Status</th>
-              <th style={{ padding: '20px', fontFamily: 'var(--font-display)', fontSize: 'var(--fs-label)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--cream-dim)' }}>Actions</th>
+            <tr>
+              <th>Date & Time</th>
+              <th>Name</th>
+              <th>Guests</th>
+              <th>Contact</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredReservations.map(res => (
-              <tr key={res.id} style={{ borderBottom: '1px solid var(--gold-border)' }}>
-                <td style={{ padding: '20px' }}>
+              <tr key={res.id}>
+                <td data-label="Date & Time">
                   <strong style={{ fontSize: '1.1rem', fontWeight: 500 }}>{res.date}</strong><br/>
                   <span style={{ color: 'var(--cream-dim)', fontSize: '0.95em' }}>{res.time}</span>
                 </td>
-                <td style={{ padding: '20px', fontWeight: 500, fontSize: '1.1rem' }}>{res.name}</td>
-                <td style={{ padding: '20px', fontSize: '1.1rem' }}>{res.guests}</td>
-                <td style={{ padding: '20px' }}>
+                <td data-label="Name" style={{ fontWeight: 500, fontSize: '1.1rem' }}>{res.name}</td>
+                <td data-label="Guests" style={{ fontSize: '1.1rem' }}>{res.guests}</td>
+                <td data-label="Contact">
                   {res.phone}<br/>
                   <span style={{ color: 'var(--cream-dim)', fontSize: '0.9em' }}>{res.email}</span>
                 </td>
-                <td style={{ padding: '20px' }}>
+                <td data-label="Status">
                   <span style={{ 
                     padding: '6px 12px', 
                     fontSize: '0.75rem',
@@ -195,45 +197,17 @@ const Admin = () => {
                     {res.status}
                   </span>
                 </td>
-                <td style={{ padding: '20px' }}>
+                <td data-label="Actions">
                   {res.status === 'Pending' ? (
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                      <button 
-                        onClick={() => handleAction(res.id, 'approve')}
-                        style={{ padding: '8px 16px', background: '#2e7d32', color: 'white', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
-                        onMouseOver={e => e.target.style.opacity = 0.8}
-                        onMouseOut={e => e.target.style.opacity = 1}
-                      >
-                        Approve
-                      </button>
-                      <button 
-                        onClick={() => handleAction(res.id, 'reject')}
-                        style={{ padding: '8px 16px', background: '#c62828', color: 'white', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
-                        onMouseOver={e => e.target.style.opacity = 0.8}
-                        onMouseOut={e => e.target.style.opacity = 1}
-                      >
-                        Reject
-                      </button>
-                      <button 
-                        onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }}
-                        style={{ padding: '8px 16px', background: 'transparent', color: '#c62828', border: '1px solid #c62828', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
-                        onMouseOver={e => e.target.style.opacity = 0.8}
-                        onMouseOut={e => e.target.style.opacity = 1}
-                      >
-                        Delete
-                      </button>
+                    <div className="admin-actions">
+                      <button onClick={() => handleAction(res.id, 'approve')} className="btn-approve">Approve</button>
+                      <button onClick={() => handleAction(res.id, 'reject')} className="btn-reject">Reject</button>
+                      <button onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }} className="btn-delete">Delete</button>
                     </div>
                   ) : (
-                    <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    <div className="admin-actions" style={{ alignItems: 'center' }}>
                       <span style={{ color: 'var(--cream-dim)', opacity: 0.5, fontFamily: 'var(--font-display)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Processed</span>
-                      <button 
-                        onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }}
-                        style={{ padding: '6px 12px', background: 'transparent', color: '#c62828', border: '1px solid #c62828', cursor: 'pointer', fontFamily: 'var(--font-display)', fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', transition: 'opacity 0.2s' }}
-                        onMouseOver={e => e.target.style.opacity = 0.8}
-                        onMouseOut={e => e.target.style.opacity = 1}
-                      >
-                        Delete
-                      </button>
+                      <button onClick={() => { if(window.confirm('Are you sure you want to delete this reservation?')) handleAction(res.id, 'delete') }} className="btn-delete-small">Delete</button>
                     </div>
                   )}
                 </td>
