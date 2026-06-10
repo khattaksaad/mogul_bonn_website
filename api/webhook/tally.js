@@ -1,18 +1,60 @@
 import { sql } from '@vercel/postgres';
 import { Resend } from 'resend';
+import crypto from 'crypto';
+
+// Disable default body parser so we can get the raw string for cryptographic signature
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export default async function handler(req, res) {
-  // Tally webhooks send POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const payload = req.body;
-    
+    // 1. Read the raw request body as a string
+    const chunks = [];
+    for await (const chunk of req) {
+      chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    const rawBody = Buffer.concat(chunks).toString('utf8');
+
+    // 2. Cryptographic Signature Verification
+    const signature = req.headers['tally-signature'];
+    const signingSecret = process.env.TALLY_SIGNING_SECRET;
+
+    if (!signingSecret) {
+      console.error('CRITICAL: TALLY_SIGNING_SECRET environment variable is missing.');
+      return res.status(500).json({ error: 'Server misconfiguration: Missing signing secret.' });
+    }
+
+    if (!signature) {
+      return res.status(401).json({ error: 'Missing tally-signature header.' });
+    }
+
+    const calculatedSignature = crypto
+      .createHmac('sha256', signingSecret)
+      .update(rawBody)
+      .digest('base64');
+
+    if (signature !== calculatedSignature) {
+      console.error('SECURITY ALERT: Invalid webhook signature detected. Possible attacker.');
+      return res.status(401).json({ error: 'Invalid cryptographic signature.' });
+    }
+
+    // 3. Parse Payload
+    let payload;
+    try {
+      payload = JSON.parse(rawBody);
+    } catch (err) {
+      return res.status(400).json({ error: 'Invalid JSON payload' });
+    }
+
     if (!payload || payload.eventType !== 'FORM_RESPONSE' || !payload.data) {
-      return res.status(400).json({ error: 'Invalid payload' });
+      return res.status(400).json({ error: 'Invalid payload structure' });
     }
 
     const fields = payload.data.fields || [];
@@ -32,6 +74,21 @@ export default async function handler(req, res) {
     const time = getValue(['uhrzeit', 'time']);
     const guests = getValue(['personen', 'guests']);
 
+    // 4. Anti-Spam Rate Limiting
+    // Check if this email or phone made a reservation in the last 1 hour
+    const recentCheck = await sql`
+      SELECT id FROM reservations 
+      WHERE (email = ${email} OR phone = ${phone}) 
+      AND created_at >= NOW() - INTERVAL '1 hour'
+    `;
+
+    if (recentCheck.rowCount > 0) {
+      console.log(`Spam prevented: Ignored duplicate reservation from ${email} / ${phone}`);
+      // Return 200 so Tally stops retrying, but don't insert into DB or send emails
+      return res.status(200).json({ success: true, message: 'Duplicate submission blocked' });
+    }
+
+    // 5. Insert into Database
     const dbResult = await sql`
       INSERT INTO reservations (name, email, phone, date, time, guests, status)
       VALUES (${name}, ${email}, ${phone}, ${date}, ${time}, ${guests}, 'Pending')
@@ -40,9 +97,11 @@ export default async function handler(req, res) {
     
     const reservationId = dbResult.rows[0].id;
 
+    // 6. Generate URLs & Send Email
     const approveUrl = `https://mogulbonn.com/api/manage-reservation?id=${reservationId}&action=approve`;
     const rejectUrl = `https://mogulbonn.com/api/manage-reservation?id=${reservationId}&action=reject`;
 
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: process.env.SENDER_EMAIL || 'reservations@mogulbonn.com',
       to: process.env.RESTAURANT_EMAIL || 'info@mogulbonn.de',
