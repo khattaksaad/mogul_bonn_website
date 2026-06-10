@@ -102,9 +102,16 @@ export default async function handler(req, res) {
     const rejectUrl = `https://mogulbonn.com/api/manage-reservation?id=${reservationId}&action=reject`;
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    
+    // Support multiple recipient emails separated by comma
+    const toEmails = (process.env.RESTAURANT_EMAIL || 'info@mogulbonn.de')
+      .split(',')
+      .map(e => e.trim())
+      .filter(e => e);
+
     await resend.emails.send({
       from: process.env.SENDER_EMAIL || 'reservations@mogulbonn.com',
-      to: process.env.RESTAURANT_EMAIL || 'info@mogulbonn.de',
+      to: toEmails,
       subject: `Neue Tischreservierung: ${name} (${date})`,
       html: `
         <h2>Neue Tischreservierung Anfrage</h2>
