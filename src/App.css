@@ -449,7 +449,8 @@ ul {
 
 /* ── CTA buttons ── */
 .hero-actions {
-  margin-top: 3.5rem;
+  margin-top: 2.2rem;
+  margin-bottom: 3.5rem;
   display: flex;
   gap: 1.2rem;
   justify-content: center;
@@ -461,21 +462,22 @@ ul {
 /* ── Scroll hint ── */
 .hero-scroll-hint {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.3rem;
   opacity: 0;
+  pointer-events: none; /* never block taps on the CTA buttons above it */
   animation: fadeIn 1s var(--ease) 1.8s forwards;
 }
 
 .hero-scroll-hint span {
   font-family: var(--font-display);
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--cream-dim);
@@ -483,7 +485,7 @@ ul {
 
 .scroll-line {
   width: 1px;
-  height: 50px;
+  height: 24px;
   background: linear-gradient(to bottom, var(--gold), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
@@ -2718,6 +2720,23 @@ ul {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  /* Buttons stack taller on mobile — drop the scroll hint so it can't
+     overlap the last CTA (Online Bestellen) at the bottom of the hero. */
+  .hero-scroll-hint {
+    display: none !important;
+  }
+
+  .hero-actions {
+    margin-top: 2.25rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-height: 750px) {
+  .hero-scroll-hint {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -2755,6 +2774,17 @@ ul {
   .hero-actions {
     flex-direction: column;
     align-items: center;
+    gap: 0.85rem;
+    width: 100%;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 
   .nav-actions {

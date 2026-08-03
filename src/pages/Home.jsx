@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Reviews from '../components/Reviews';
 import SEO from '../components/SEO';
+import AnnouncementPopup from '../components/AnnouncementPopup';
 
 /* Real opening hours data */
 const HOURS = [
@@ -146,6 +147,9 @@ export default function Home() {
         keywords="Indisches Restaurant Bonn, Pakistanisches Restaurant Bonn, Mogul Bonn, Biryani Bonn Zentrum, Halal Restaurant NRW, Curry, Heerstraße"
         canonicalUrl="/"
       />
+
+      <AnnouncementPopup />
+
       {/* ═══ HERO ════════════════════════════════════════════════ */}
       <section className="hero" ref={heroRef}>
 

@@ -1,0 +1,115 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ANNOUNCEMENT POPUP — Event flyer overlay
+═══════════════════════════════════════════════════════════════════ */
+
+.announce-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 5vw, 2rem);
+  background: rgba(20, 16, 14, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  animation: announce-fade-in 0.45s ease forwards;
+}
+
+.announce-overlay.is-closing {
+  animation: announce-fade-out 0.4s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes announce-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes announce-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.announce-card {
+  position: relative;
+  width: min(420px, 100%);
+  max-height: 90vh;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(194, 94, 59, 0.25);
+  transform: translateY(24px) scale(0.96);
+  opacity: 0;
+  animation: announce-card-in 0.55s 0.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+}
+
+.announce-overlay.is-closing .announce-card {
+  animation: announce-card-out 0.35s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes announce-card-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes announce-card-out {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to   { opacity: 0; transform: translateY(16px) scale(0.96); }
+}
+
+.announce-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  background: #FAFAF5;
+}
+
+.announce-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(20, 16, 14, 0.75);
+  color: #FAFAF5;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.announce-close:hover,
+.announce-close:focus-visible,
+.announce-close:active {
+  background: #C25E3B;
+  transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  .announce-card {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .announce-close {
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.6rem;
+  }
+}
