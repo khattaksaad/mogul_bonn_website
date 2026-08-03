@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import './AnnouncementPopup.css';
 
 const SHOW_DELAY_MS = 3000;   // appear 3s after landing
-const AUTO_HIDE_MS = 10000;   // stay visible for 10s, then auto-dismiss
 const STORAGE_KEY = 'mogul-announcement-wine-sip-2026-08-21';
 
 export default function AnnouncementPopup() {
@@ -37,12 +36,6 @@ export default function AnnouncementPopup() {
       return true;
     });
   }, []);
-
-  useEffect(() => {
-    if (!visible) return;
-    const hideTimer = setTimeout(() => handleClose(), AUTO_HIDE_MS);
-    return () => clearTimeout(hideTimer);
-  }, [visible, handleClose]);
 
   if (!visible) return null;
 
