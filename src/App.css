@@ -1196,6 +1196,28 @@ ul {
   line-height: 1;
 }
 
+.menu-hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-sub, 1.05rem);
+  color: var(--cream-dim);
+  max-width: 560px;
+  margin-top: 0.85rem;
+  line-height: 1.6;
+}
+
+.menu-hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.menu-inline-order-btn {
+  margin-left: 0.75rem !important;
+  padding: 0.35rem 0.9rem !important;
+  font-size: 0.7rem !important;
+}
+
 /* Category tabs */
 .menu-tabs-bar {
   background: var(--ink-2);

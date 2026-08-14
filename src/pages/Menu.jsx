@@ -125,6 +125,45 @@ export default function Menu() {
   const [active, setActive] = useState(cats[0]);
   const [animKey, setAnimKey] = useState(0);
   const tabsRef = useRef(null);
+  const orderBtnRef = useRef(null);
+  const autoOpenedRef = useRef(false);
+
+  // Auto-trigger GloriaFood ordering widget on /speisekarte load
+  useEffect(() => {
+    autoOpenedRef.current = false;
+
+    const bindAndOpenGloriaFood = () => {
+      if (typeof window.glfBindButtons === 'function') {
+        window.glfBindButtons();
+      }
+
+      if (!autoOpenedRef.current && orderBtnRef.current) {
+        orderBtnRef.current.click();
+        autoOpenedRef.current = true;
+        return true;
+      }
+      return false;
+    };
+
+    // Immediate attempt
+    bindAndOpenGloriaFood();
+
+    // Poll until GloriaFood script is bound & opened
+    const intervalId = setInterval(() => {
+      if (bindAndOpenGloriaFood()) {
+        clearInterval(intervalId);
+      }
+    }, 300);
+
+    const timeoutId = setTimeout(() => {
+      clearInterval(intervalId);
+    }, 4000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const changeCategory = (cat) => {
     if (cat === active) return;
@@ -167,6 +206,20 @@ export default function Menu() {
         <div className="menu-hero-content">
           <span className="menu-hero-eyebrow">The Mogul Collection</span>
           <h1 className="menu-hero-title">Speisekarte</h1>
+          <p className="menu-hero-subtitle">
+            Bestellen Sie Ihre Lieblingsgerichte direkt online zur Abholung oder Lieferung.
+          </p>
+          <div className="menu-hero-actions" style={{ marginTop: '1.5rem' }}>
+            <button
+              ref={orderBtnRef}
+              className="glf-button btn btn-gold"
+              data-glf-cuid=""
+              data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+              aria-label="Online bestellen"
+            >
+              Jetzt Online Bestellen 🛒
+            </button>
+          </div>
         </div>
       </section>
 
@@ -201,6 +254,14 @@ export default function Menu() {
               <div className="legend-item" title="Scharf / Pikant">
                 <ChiliIcon /> <span>Scharf</span>
               </div>
+              <button
+                className="glf-button btn btn-gold menu-inline-order-btn"
+                data-glf-cuid=""
+                data-glf-ruid="8f4c63b5-308c-432e-990b-057b82f2697c"
+                aria-label="Online bestellen"
+              >
+                Bestellen 🛒
+              </button>
             </div>
             <span className="menu-section-count">{items.length} Gerichte</span>
           </div>
