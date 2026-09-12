@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 
 const LeafIcon = () => (
@@ -124,46 +125,46 @@ export default function Menu() {
   const cats = Object.keys(menuData);
   const [active, setActive] = useState(cats[0]);
   const [animKey, setAnimKey] = useState(0);
+  const [showChoiceModal, setShowChoiceModal] = useState(true);
   const tabsRef = useRef(null);
   const orderBtnRef = useRef(null);
-  const autoOpenedRef = useRef(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Auto-trigger GloriaFood ordering widget on /speisekarte load
+  // Bind GloriaFood script and handle action query parameters
   useEffect(() => {
-    autoOpenedRef.current = false;
-
-    const bindAndOpenGloriaFood = () => {
+    const bindGloriaFood = () => {
       if (typeof window.glfBindButtons === 'function') {
         window.glfBindButtons();
       }
-
-      if (!autoOpenedRef.current && orderBtnRef.current) {
-        orderBtnRef.current.click();
-        autoOpenedRef.current = true;
-        return true;
-      }
-      return false;
     };
 
-    // Immediate attempt
-    bindAndOpenGloriaFood();
+    bindGloriaFood();
+    const intervalId = setInterval(bindGloriaFood, 500);
+    const timeoutId = setTimeout(() => clearInterval(intervalId), 3000);
 
-    // Poll until GloriaFood script is bound & opened
-    const intervalId = setInterval(() => {
-      if (bindAndOpenGloriaFood()) {
+    const searchParams = new URLSearchParams(location.search);
+    const action = searchParams.get('action') || searchParams.get('direct');
+
+    if (action === 'order') {
+      setShowChoiceModal(false);
+      const triggerTimeout = setTimeout(() => {
+        if (orderBtnRef.current) orderBtnRef.current.click();
+      }, 500);
+      return () => {
         clearInterval(intervalId);
-      }
-    }, 300);
-
-    const timeoutId = setTimeout(() => {
-      clearInterval(intervalId);
-    }, 4000);
+        clearTimeout(timeoutId);
+        clearTimeout(triggerTimeout);
+      };
+    } else if (action === 'reserve') {
+      navigate('/reservieren');
+    }
 
     return () => {
       clearInterval(intervalId);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [location.search, navigate]);
 
   const changeCategory = (cat) => {
     if (cat === active) return;
@@ -299,6 +300,55 @@ export default function Menu() {
           </div>
         </div>
       </section>
+
+      {/* ── QR CODE ACTION SELECTOR MODAL ───────────────────────── */}
+      {showChoiceModal && (
+        <div className="qr-choice-overlay" onClick={() => setShowChoiceModal(false)} role="dialog" aria-modal="true">
+          <div className="qr-choice-card" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="qr-choice-close" 
+              onClick={() => setShowChoiceModal(false)}
+              aria-label="Schließen"
+              type="button"
+            >
+              &times;
+            </button>
+            <span className="qr-choice-eyebrow">WILLKOMMEN BEI MOGUL BONN</span>
+            <h2 className="qr-choice-title">Wie möchten Sie genießen?</h2>
+            <p className="qr-choice-subtitle">
+              Wählen Sie eine Option für Ihren Besuch oder Ihre Bestellung:
+            </p>
+
+            <div className="qr-choice-actions">
+              <Link to="/reservieren" className="qr-choice-btn btn-reserve">
+                <span className="qr-choice-icon" role="img" aria-label="Tisch">🪑</span>
+                <div className="qr-choice-btn-text">
+                  <strong>Tisch reservieren</strong>
+                  <small>Dine-In · Für Ihren Besuch vor Ort im Restaurant</small>
+                </div>
+              </Link>
+
+              <button 
+                type="button"
+                className="qr-choice-btn btn-order"
+                onClick={() => {
+                  setShowChoiceModal(false);
+                  if (orderBtnRef.current) {
+                    orderBtnRef.current.click();
+                  }
+                }}
+              >
+                <span className="qr-choice-icon" role="img" aria-label="Bestellen">🛒</span>
+                <div className="qr-choice-btn-text">
+                  <strong>Online bestellen</strong>
+                  <small>Abholung &amp; Lieferung via GloriaFood</small>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+

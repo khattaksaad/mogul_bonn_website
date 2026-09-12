@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import './AnnouncementPopup.css';
 
-const SHOW_DELAY_MS = 3000;   // appear 3s after landing
+const SHOW_DELAY_MS = 2500;   // appear 2.5s after landing
 const STORAGE_KEY = 'mogul-announcement-wine-sip-2026-08-21';
 
 export default function AnnouncementPopup() {
@@ -14,7 +15,7 @@ export default function AnnouncementPopup() {
     try {
       if (window.localStorage.getItem(STORAGE_KEY)) return;
     } catch {
-      // Ignore storage access restrictions (e.g. Safari private mode)
+      // Ignore storage access restrictions
     }
 
     const showTimer = setTimeout(() => setVisible(true), SHOW_DELAY_MS);
@@ -48,11 +49,6 @@ export default function AnnouncementPopup() {
       onClick={handleClose}
     >
       <div className="announce-card" onClick={(e) => e.stopPropagation()}>
-        <img
-          src="/assets/images/event-wine-sip.webp"
-          alt="Wine Sip Event — Weiss. Rosé. Was? Am 21.08.2026 um 18:30 Uhr im Mogul Restaurant, Heerstraße 64, 53111 Bonn. 27€ pro Person."
-          loading="eager"
-        />
         <button
           className="announce-close"
           onClick={handleClose}
@@ -61,8 +57,40 @@ export default function AnnouncementPopup() {
         >
           &times;
         </button>
+
+        <div className="announce-header">
+          <span className="announce-eyebrow">EXKLUSIVES EVENT · MOGUL BONN</span>
+          <h2 className="announce-title">
+            Weiss. Rosé. <em style={{ color: 'var(--gold)', fontStyle: 'italic' }}>Was?</em>
+          </h2>
+          <div className="announce-date">
+            📅 Freitag, 21. August 2026 · 18:30 Uhr · 27 € p.P.
+          </div>
+        </div>
+
+        <div className="announce-image-frame">
+          <img
+            src="/assets/images/event-wine-sip.webp"
+            alt="Wine Sip Event am 21.08.2026 im Mogul Restaurant Bonn"
+            loading="eager"
+          />
+        </div>
+
+        <div className="announce-footer">
+          <p className="announce-desc">
+            Genießen Sie einen unvergesslichen Abend voller erlesener Weine und abgestimmter kulinarischer Köstlichkeiten in der Heerstraße.
+          </p>
+          <div className="announce-actions">
+            <Link 
+              to="/reservieren" 
+              className="btn btn-gold announce-btn-reserve"
+              onClick={handleClose}
+            >
+              Jetzt Tisch Reservieren 🪑
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
