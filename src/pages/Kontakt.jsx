@@ -54,8 +54,8 @@ export default function Kontakt() {
 
   return (
     <div className="kp-page">
-      <SEO 
-        title="Kontakt & Anfahrt" 
+      <SEO
+        title="Kontakt & Anfahrt"
         description="Besuchen Sie das Mogul Bonn in der Heerstraße 64, 53111 Bonn. Rufen Sie uns an unter 0228 695569. Wir freuen uns auf Ihren Besuch!"
         keywords="Mogul Bonn Adresse, Heerstraße 64 Bonn, Indisches Restaurant Kontakt, Pakistanisches Restaurant Öffnungszeiten, Tisch reservieren Telefon"
         canonicalUrl="/kontakt"
@@ -93,7 +93,7 @@ export default function Kontakt() {
               <span className="kp-info-label">Telefon</span>
               <div className="kp-phones">
                 <div>
-                  <a href="tel:+4922869556" className="kp-phone-link">+49 228 695569</a>
+                  <a href="tel:+49228695569" className="kp-phone-link">+49 228 695569</a>
                   <small>Reservierungen &amp; Anfragen</small>
                 </div>
                 <div>
