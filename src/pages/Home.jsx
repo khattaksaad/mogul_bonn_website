@@ -318,7 +318,7 @@ export default function Home() {
               <div className="divider" style={{ marginTop: '2rem', marginBottom: '2rem' }} />
               <p style={{ color: 'var(--cream-dim)', fontWeight: 300, lineHeight: 1.8, fontSize: '0.95rem' }}>
                 Heerstraße 64, 53111 Bonn<br />
-                <a href="tel:+4922869556" style={{ color: 'var(--gold)', marginTop: '0.5rem', display: 'block' }}>
+                <a href="tel:+49228695569" style={{ color: 'var(--gold)', marginTop: '0.5rem', display: 'block' }}>
                   +49 228 695569
                 </a>
               </p>

@@ -45,7 +45,7 @@ function Footer() {
             <ul>
               <li><span>Heerstraße 64</span></li>
               <li><span>53111 Bonn</span></li>
-              <li><a href="tel:+4922869556">+49 228 695569</a></li>
+              <li><a href="tel:+49228695569">+49 228 695569</a></li>
               <li>
                 <Link
                   to="/reservieren"

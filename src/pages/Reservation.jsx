@@ -74,7 +74,7 @@ export default function Reservation() {
           <p style={{ color: 'var(--cream-dim)' }}>
             Wir sind zu unseren Öffnungszeiten auch telefonisch für Sie erreichbar.
           </p>
-          <a href="tel:+4922869556" className="btn btn-outline" style={{ marginTop: '2rem', display: 'inline-flex', padding: '0.75rem 2rem' }}>
+          <a href="tel:+49228695569" className="btn btn-outline" style={{ marginTop: '2rem', display: 'inline-flex', padding: '0.75rem 2rem' }}>
             +49 228 695569
           </a>
         </div>
